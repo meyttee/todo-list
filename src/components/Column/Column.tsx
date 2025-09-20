@@ -1,9 +1,10 @@
 import type { DragEvent } from "react";
-import ColumnHeader from "../ColumnHeader/ColumnHeader";
-import { useAppState } from "../../hooks";
-import { Card } from "../Card";
 
-const Column = ({ id }: { id: string }) => {
+import { Card } from "../Card";
+import { useAppState } from "../../hooks";
+import ColumnHeader from "../ColumnHeader/ColumnHeader";
+
+const Column = ({ columnId }: { columnId: string }) => {
   const { state, dispatch } = useAppState();
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -19,16 +20,17 @@ const Column = ({ id }: { id: string }) => {
       taskId: data.id,
     });
   };
+
   return (
     <div
-      id={id}
+      id={columnId}
       onDragOver={handleDragOver}
-      onDrop={(e) => onDrop(e, id)}
+      onDrop={(e) => onDrop(e, columnId)}
       className="flex h-[calc(100vh-124px)] min-w-90 flex-col items-center justify-start gap-4 overflow-auto rounded-xl border border-dashed border-gray-500 p-4 md:w-90"
     >
-      <ColumnHeader title={id} />
-      {state.data.get(id)?.map((card) => (
-        <Card key={card.id} {...card} colId={id} />
+      <ColumnHeader title={columnId} />
+      {state.data.get(columnId)?.map((card) => (
+        <Card key={card.id} {...card} columnId={columnId} />
       ))}
     </div>
   );
