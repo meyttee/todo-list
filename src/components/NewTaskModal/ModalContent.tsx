@@ -1,9 +1,14 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
-import { schema, type formType } from "./schema";
-import { Button, ControlledInput } from "..";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Button } from "../Button";
 import { useAppState } from "../../hooks";
+import { ControlledInput } from "../Input";
+import { RangeInput } from "../RangeInput";
+import { ControlledSelect } from "../Select";
+
+import { schema, type formType } from "./schema";
 
 const ModalContent = ({
   submitCallback,
@@ -14,11 +19,13 @@ const ModalContent = ({
 }) => {
   const { dispatch } = useAppState();
 
-  const { handleSubmit, control } = useForm<formType>({
+  const { handleSubmit, control, setValue, getValues } = useForm<formType>({
     resolver: zodResolver(schema),
     defaultValues: {
       description: "",
       title: "",
+      priority: 1,
+      status: "",
     },
   });
 
@@ -39,6 +46,20 @@ const ModalContent = ({
         control={control}
         label="description"
       />
+      <RangeInput
+        onChange={(value) => setValue("priority", value)}
+        value={getValues("priority")}
+      />
+      <ControlledSelect
+        name="status"
+        control={control}
+        label="status"
+        options={[
+          { label: "done", value: "done" },
+          { label: "todo", value: "todo" },
+        ]}
+      />
+
       <Button variant="normal" type="submit">
         Submit
       </Button>
