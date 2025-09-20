@@ -15,7 +15,10 @@ const reducer = (
     case "CREATE_TASK": {
       const newMap = new Map(state.data);
       const tasks = newMap.get(action.key) || [];
-      newMap.set(action.key, [...tasks, action.value]);
+      newMap.set(
+        action.key,
+        [...tasks, action.value].sort((a, b) => b.priority - a.priority),
+      );
       return { ...state, data: newMap };
     }
 
@@ -33,8 +36,14 @@ const reducer = (
           ...(targetCol?.map((item) => item) as IData[]),
           ...(prevCol?.filter((prev) => prev.id === action.taskId) as IData[]),
         ];
-        newMap.set(action.targetCol, targetList);
-        newMap.set(action.fromCol, prevList);
+        newMap.set(
+          action.targetCol,
+          targetList.sort((a, b) => b.priority - a.priority),
+        );
+        newMap.set(
+          action.fromCol,
+          prevList.sort((a, b) => b.priority - a.priority),
+        );
         return { ...state, data: newMap };
       }
     }
@@ -49,13 +58,16 @@ const reducer = (
         (task) => task.id !== action.taskId,
       ) as IData[];
 
-      newMap.set(action.columnId, [
-        ...otherTasks,
-        {
-          ...selectedTask,
-          status: "done",
-        },
-      ]);
+      newMap.set(
+        action.columnId,
+        [
+          ...otherTasks,
+          {
+            ...selectedTask,
+            status: "done" as const,
+          },
+        ].sort((a, b) => b.priority - a.priority),
+      );
       return { ...state, data: newMap };
     }
 
@@ -69,13 +81,16 @@ const reducer = (
         (task) => task.id !== action.taskId,
       ) as IData[];
 
-      newMap.set(action.columnId, [
-        ...otherTasks,
-        {
-          ...selectedTask,
-          status: "todo",
-        },
-      ]);
+      newMap.set(
+        action.columnId,
+        [
+          ...otherTasks,
+          {
+            ...selectedTask,
+            status: "todo" as const,
+          },
+        ].sort((a, b) => b.priority - a.priority),
+      );
       return { ...state, data: newMap };
     }
 
@@ -89,13 +104,16 @@ const reducer = (
         (task) => task.id !== action.taskId,
       ) as IData[];
 
-      newMap.set(action.columnId, [
-        ...otherTasks,
-        {
-          ...selectedTask,
-          ...action.value,
-        },
-      ]);
+      newMap.set(
+        action.columnId,
+        [
+          ...otherTasks,
+          {
+            ...selectedTask,
+            ...action.value,
+          },
+        ].sort((a, b) => b.priority - a.priority),
+      );
       return { ...state, data: newMap };
     }
 
@@ -104,7 +122,9 @@ const reducer = (
       const tasks = newMap.get(action.columnId) || [];
       newMap.set(
         action.columnId,
-        tasks.filter((task) => task.id !== action.taskId),
+        tasks
+          .filter((task) => task.id !== action.taskId)
+          .sort((a, b) => b.priority - a.priority),
       );
       return { ...state, data: newMap };
     }
