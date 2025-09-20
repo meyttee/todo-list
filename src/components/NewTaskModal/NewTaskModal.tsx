@@ -24,7 +24,7 @@ const NewTaskModal = ({ id }: { id: string }) => {
           icon="majesticons:plus"
           width="20"
           height="20"
-          className="text-[#78D700]"
+          className="text-green-400"
         />
       </Button>
       <Modal isOpen={showModal} onClose={handleClose} title="Create New Task">
