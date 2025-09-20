@@ -13,7 +13,7 @@ export default function Modal(props: IModalProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/25" onClick={onClose} />
       <div
-        className="relative z-10 w-full max-w-md rounded-lg bg-white p-6 shadow-lg dark:bg-[#2a2b2f]"
+        className="relative z-10 w-full max-w-md rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-800"
         role="dialog"
         aria-modal="true"
       >
@@ -24,7 +24,7 @@ export default function Modal(props: IModalProps) {
               icon="majesticons:close"
               width="20"
               height="20"
-              className="text-[#1C1D22] dark:text-white"
+              className="text-neutral-800 dark:text-white"
             />
           </Button>
         </div>
