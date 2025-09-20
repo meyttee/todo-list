@@ -9,12 +9,14 @@ import { CardDetailModal } from "../CardDetail";
 
 import type { ICardProps } from "./interface";
 import { EditTask } from "../EditTaskModal";
+import { ConfirmModal } from "../ConfirmModal";
 
 const Card = (props: ICardProps) => {
   const { status, title, id, columnId, priority } = props;
 
   const { dispatch } = useAppState();
   const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const onClose = () => setShowModal(false);
 
@@ -36,9 +38,12 @@ const Card = (props: ICardProps) => {
     setShowModal(true);
   };
 
-  const handleDelete = () => {
+  const onDeleteButtonClick = () => setShowDeleteModal(true);
+
+  const handleSubmit = () =>
     dispatch({ type: "DELETE_TASK", columnId, taskId: id });
-  };
+
+  const handleClose = () => setShowDeleteModal(false);
 
   return (
     <div
@@ -75,7 +80,11 @@ const Card = (props: ICardProps) => {
           {valuesLabel[priority]}
         </h6>
       </div>
-      <Button variant="icon" onClick={handleDelete} title="delete column">
+      <Button
+        variant="icon"
+        onClick={onDeleteButtonClick}
+        title="delete column"
+      >
         <Icon
           icon="majesticons:close"
           width="20"
@@ -83,6 +92,13 @@ const Card = (props: ICardProps) => {
           className="text-red-300"
         />
       </Button>
+      <ConfirmModal
+        handleSubmit={handleSubmit}
+        handleClose={handleClose}
+        isOpen={showDeleteModal}
+        title="Delete Task"
+        description={`After delete (${props.title}) all data will be lost`}
+      />
       <EditTask {...props} />
     </div>
   );
