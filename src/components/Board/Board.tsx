@@ -8,7 +8,7 @@ const Board = () => {
   return (
     <Container>
       {Array.from(state.data.keys()).map((key) => (
-        <Column key={key} id={key} />
+        <Column key={key} columnId={key} />
       ))}
     </Container>
   );
