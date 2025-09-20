@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema, type formType } from "./schema";
+
+import { Button } from "../Button";
 import { useAppState } from "../../hooks";
-import { Button, ControlledInput } from "..";
+import { ControlledInput } from "../Input";
+
+import { schema, type formType } from "./schema";
 
 const ModalContent = ({ submitCallback }: { submitCallback: () => void }) => {
   const { dispatch } = useAppState();

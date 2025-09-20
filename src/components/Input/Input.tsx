@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import type { IInputProps } from "./interface";
 
 const Input = ({ error, ...props }: IInputProps) => (
