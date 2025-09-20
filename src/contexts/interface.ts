@@ -7,6 +7,7 @@ interface IData {
   description: string;
   status: "done" | "todo";
   id: string;
+  priority: number;
 }
 
 interface IContext {
