@@ -1,4 +1,5 @@
 import clsx from "clsx";
+
 import type { IBaseButtonProps } from "./interface";
 import { baseClasses, fabButtonClasses, iconButtonClasses } from "./classes";
 
