@@ -6,6 +6,7 @@ interface ICardDetailProps {
   status: "done" | "todo";
   id: string;
   columnId: string;
+  priority: number;
 }
 
 export type { ICardDetailProps };

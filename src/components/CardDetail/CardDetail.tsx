@@ -3,9 +3,20 @@ import { Button } from "../Button";
 import { useAppState } from "../../hooks";
 
 import type { ICardDetailProps } from "./interface";
+import { valuesLabel } from "../../constants";
+import clsx from "clsx";
 
 const CardDetailModal = (props: ICardDetailProps) => {
-  const { isOpen, onClose, description, status, title, id, columnId } = props;
+  const {
+    isOpen,
+    onClose,
+    description,
+    status,
+    title,
+    id,
+    columnId,
+    priority,
+  } = props;
 
   const { dispatch } = useAppState();
 
@@ -32,14 +43,32 @@ const CardDetailModal = (props: ICardDetailProps) => {
   };
 
   return (
-    <Modal onClose={onClose} isOpen={isOpen} title="Detail">
+    <Modal onClose={onClose} isOpen={isOpen} title={title}>
       <div className="flex flex-col gap-5">
-        <h2 className={titleClasses}>Title</h2>
-        <h5 className={sectionBodyClasses}>{title}</h5>
         <h2 className={titleClasses}>Description</h2>
         <h5 className={sectionBodyClasses}>{description}</h5>
-        <h2 className={titleClasses}>Status</h2>
-        <h5 className={sectionBodyClasses}>{status}</h5>
+        <div className="flex justify-between gap-10">
+          <div className="w-full">
+            <h2 className={titleClasses}>Status</h2>
+            <h5 className={sectionBodyClasses}>{status}</h5>
+          </div>
+          <div className="w-full">
+            <h2 className={titleClasses}>Priority</h2>
+            <h5
+              className={clsx(
+                sectionBodyClasses,
+                "flex items-center gap-2 before:block before:size-4 before:rounded-full before:content-['']",
+                {
+                  "before:!bg-red-400": priority === 3,
+                  "before:!bg-blue-400": priority === 2,
+                  "before:!bg-green-400": priority === 1,
+                },
+              )}
+            >
+              {valuesLabel[priority]}
+            </h5>
+          </div>
+        </div>
         <div className="flex justify-end">
           <Button variant="normal" onClick={clickHandler}>
             {status === "done" ? "Mark As TODO" : "Mark As DONE"}
