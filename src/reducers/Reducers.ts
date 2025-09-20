@@ -79,6 +79,26 @@ const reducer = (
       return { ...state, data: newMap };
     }
 
+    case "UPDATE_TASK": {
+      const newMap = new Map(state.data);
+      const tasks = newMap.get(action.columnId) || [];
+      const selectedTask = tasks.find(
+        (task) => task.id === action.taskId,
+      ) as IData;
+      const otherTasks = tasks.filter(
+        (task) => task.id !== action.taskId,
+      ) as IData[];
+
+      newMap.set(action.columnId, [
+        ...otherTasks,
+        {
+          ...selectedTask,
+          ...action.value,
+        },
+      ]);
+      return { ...state, data: newMap };
+    }
+
     case "DELETE_TASK": {
       const newMap = new Map(state.data);
       const tasks = newMap.get(action.columnId) || [];

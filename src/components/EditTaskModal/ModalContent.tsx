@@ -7,32 +7,34 @@ import { useAppState } from "../../hooks";
 import { ControlledInput } from "../Input";
 import { RangeInput } from "../RangeInput";
 import { ControlledSelect } from "../Select";
+import type { ICardProps } from "../Card/interface";
 
 import { schema, type formType } from "./schema";
 
 const ModalContent = ({
   submitCallback,
-  id,
+  ...props
 }: {
   submitCallback: () => void;
-  id: string;
-}) => {
+} & ICardProps) => {
+  const { columnId, description, id, priority, status, title } = props;
   const { dispatch } = useAppState();
 
   const { handleSubmit, control, setValue, watch } = useForm<formType>({
     resolver: zodResolver(schema),
     defaultValues: {
-      description: "",
-      title: "",
-      priority: 1,
-      status: { label: "todo", value: "todo" },
+      description: description,
+      title: title,
+      priority: priority,
+      status: { label: status, value: status },
     },
   });
 
   const onSubmit = handleSubmit((data) => {
     dispatch({
-      type: "CREATE_TASK",
-      key: id,
+      type: "UPDATE_TASK",
+      columnId,
+      taskId: id,
       value: {
         ...data,
         status: data.status.value as "done" | "todo",

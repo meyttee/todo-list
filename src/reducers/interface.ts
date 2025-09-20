@@ -7,6 +7,7 @@ interface IReducerState {
 
 type TReducerAction =
   | { type: "CREATE_TASK"; key: string; value: IData }
+  | { type: "UPDATE_TASK"; taskId: string; columnId: string; value: IData }
   | { type: "CREATE_COLUMN"; key: string }
   | { type: "DELETE_TASK"; taskId: string; columnId: string }
   | { type: "DELETE_COLUMN"; key: string }

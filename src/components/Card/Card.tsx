@@ -8,6 +8,7 @@ import { valuesLabel } from "../../constants";
 import { CardDetailModal } from "../CardDetail";
 
 import type { ICardProps } from "./interface";
+import { EditTask } from "../EditTaskModal";
 
 const Card = (props: ICardProps) => {
   const { status, title, id, columnId, priority } = props;
@@ -82,6 +83,7 @@ const Card = (props: ICardProps) => {
           className="text-red-300"
         />
       </Button>
+      <EditTask {...props} />
     </div>
   );
 };

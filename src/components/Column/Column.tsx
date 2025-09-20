@@ -26,7 +26,7 @@ const Column = ({ columnId }: { columnId: string }) => {
       id={columnId}
       onDragOver={handleDragOver}
       onDrop={(e) => onDrop(e, columnId)}
-      className="flex h-[calc(100vh-124px)] min-w-90 flex-col items-center justify-start gap-4 overflow-auto rounded-xl border border-dashed border-gray-500 p-4 md:w-90"
+      className="flex h-[calc(100vh-144px)] max-h-full min-w-90 flex-col items-center justify-start gap-4 overflow-auto rounded-xl border border-dashed border-gray-500 p-4 md:w-90"
     >
       <ColumnHeader title={columnId} />
       {state.data.get(columnId)?.map((card) => (
