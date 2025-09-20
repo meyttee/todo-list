@@ -13,8 +13,8 @@ const CutomSelect = (props: Props & { label: string }) => (
       classNames={{
         container: () => "w-full",
         control: () =>
-          "!bg-transparent dark:!border-[#888DA7] dark:hover:!border-white/80 !outline-0 !shadow-none",
-        input: () => "text-white dark:!text-white",
+          "!bg-transparent dark:!border-gray-500 dark:hover:!border-white/80 !outline-0 !shadow-none",
+        input: () => "text-white dark:!text-white h-8",
         singleValue: () => "dark:!text-white",
       }}
     />
