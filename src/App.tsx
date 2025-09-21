@@ -1,5 +1,3 @@
-import "./App.css";
-
 import { StateProvider } from "./providers";
 import { Board, Header, NewColumnModal } from "./components";
 
