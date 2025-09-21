@@ -1,4 +1,4 @@
-import type { ICardProps } from "../../Cards";
+import type { ICardProps } from "../../TaskCard";
 
 interface IEditModalContentProps extends ICardProps {
   submitCallback: () => void;

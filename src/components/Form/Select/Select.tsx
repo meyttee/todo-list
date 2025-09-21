@@ -23,17 +23,15 @@ import Select, { type Props } from "react-select";
  * ```
  */
 
-const CutomSelect = (
-  props: Props<{ label: string; value: string }> & { label: string },
-) => (
+const CutomSelect = (props: Props & { label: string }) => (
   <div className="flex flex-col gap-1">
     <label htmlFor={props.name} className="dark:text-white">
       {props.label}
     </label>
     <Select
       {...props}
-      getOptionLabel={(opt) => opt.label}
-      getOptionValue={(opt) => opt.value}
+      getOptionLabel={(opt) => (opt as { label: string; value: string }).label}
+      getOptionValue={(opt) => (opt as { label: string; value: string }).value}
       id={props.name}
       classNames={{
         container: () => "w-full",

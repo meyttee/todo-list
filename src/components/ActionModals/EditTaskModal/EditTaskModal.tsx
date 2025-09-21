@@ -3,7 +3,7 @@ import { lazy, useState } from "react";
 
 import { Modal } from "../../Modal";
 import { Button } from "../../Form";
-import type { ICardProps } from "../../Cards";
+import type { ICardProps } from "../../TaskCard";
 
 const ModalContent = lazy(() => import("./ModalContent"));
 
