@@ -3,6 +3,16 @@ import type { ReactNode } from "react";
 
 import type { ISwitchProps } from "./interface";
 
+/**
+ * Renders a customizable switch (toggle) component.
+ *
+ * @param checked - Determines whether the switch is in the "on" position.
+ * @param label - The text label displayed next to the switch.
+ * @param onChange - Callback function invoked when the switch state changes.
+ * @param variant - Optional variant to modify the switch appearance (e.g., "theme" for theme toggling).
+ * @returns A ReactNode representing the switch UI.
+ */
+
 const Switch = ({
   checked,
   label,
