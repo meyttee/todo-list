@@ -2,11 +2,13 @@ import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "../../Form/Button";
+import {
+  Button,
+  ControlledInput,
+  ControlledSelect,
+  RangeInput,
+} from "../../Form";
 import { useAppState } from "../../../hooks";
-import { ControlledInput } from "../../Form/Input";
-import { RangeInput } from "../../Form/RangeInput";
-import { ControlledSelect } from "../../Form/Select";
 
 import { schema, type formType } from "./schema";
 

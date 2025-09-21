@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
-import { Button } from "../../Form/Button";
+import { Button } from "../../Form";
 import { useAppState } from "../../../hooks";
-import { NewTaskModal } from "../../ActionModals/NewTaskModal";
-import { ConfirmModal } from "../../ActionModals/ConfirmModal";
+import { NewTaskModal, ConfirmModal } from "../../ActionModals";
 
 const ColumnAction = ({ id }: { id: string }) => {
   const [showModal, setShowModal] = useState(false);

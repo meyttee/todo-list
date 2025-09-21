@@ -1,6 +1,7 @@
 import "./App.css";
-import { Board, Header, NewColumnModal } from "./components";
+
 import { StateProvider } from "./providers";
+import { Board, Header, NewColumnModal } from "./components";
 
 function App() {
   return (

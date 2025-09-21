@@ -1,4 +1,5 @@
 import type { IData } from "../contexts";
+
 import type { IReducerState, TReducerAction } from "./interface";
 
 const reducer = (

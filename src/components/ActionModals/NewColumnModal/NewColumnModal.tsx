@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 
 import { Modal } from "../../Modal";
-import { Button } from "../../Form/Button";
+import { Button } from "../../Form";
 import ModalContent from "./ModalContent";
 
 const NewColumnModal = () => {

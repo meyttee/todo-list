@@ -1,10 +1,11 @@
-import { Modal } from "../Modal";
-import { Button } from "../Button";
-import { useAppState } from "../../hooks";
+import clsx from "clsx";
+
+import { Button } from "../../Form";
+import { Modal } from "../../Modal";
+import { useAppState } from "../../../hooks";
+import { periorityMap } from "../../../constants";
 
 import type { ICardDetailProps } from "./interface";
-import { valuesLabel } from "../../constants";
-import clsx from "clsx";
 
 const CardDetailModal = (props: ICardDetailProps) => {
   const {
@@ -65,7 +66,7 @@ const CardDetailModal = (props: ICardDetailProps) => {
                 },
               )}
             >
-              {valuesLabel[priority]}
+              {periorityMap[priority]}
             </h5>
           </div>
         </div>

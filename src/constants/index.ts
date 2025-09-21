@@ -1,1 +1,1 @@
-export { default as valuesLabel } from "./Priorities";
+export { default as periorityMap } from "./Priorities";

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { valuesLabel } from "../../../constants";
+import { periorityMap } from "../../../constants";
 
 const RangeInput = ({
   onChange,
@@ -54,7 +54,7 @@ const RangeInput = ({
           }}
         />
         <span className="text-gray-700 dark:text-gray-200">
-          {valuesLabel[value]}
+          {periorityMap[value]}
         </span>
       </div>
     </div>

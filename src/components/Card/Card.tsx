@@ -2,14 +2,14 @@ import clsx from "clsx";
 import { Icon } from "@iconify/react";
 import { useState, type MouseEvent } from "react";
 
-import { Button } from "../Form/Button";
+import { Button } from "../Form";
 import { useAppState } from "../../hooks";
-import { valuesLabel } from "../../constants";
-import { CardDetailModal } from "../CardDetail";
+import { periorityMap } from "../../constants";
+import { EditTask, ConfirmModal } from "../ActionModals";
+
+import { CardDetailModal } from "./CardDetail";
 
 import type { ICardProps } from "./interface";
-import { EditTask } from "../ActionModals/EditTaskModal";
-import { ConfirmModal } from "../ActionModals/ConfirmModal";
 
 const Card = (props: ICardProps) => {
   const { status, title, id, columnId, priority } = props;
@@ -77,7 +77,7 @@ const Card = (props: ICardProps) => {
             },
           )}
         >
-          {valuesLabel[priority]}
+          {periorityMap[priority]}
         </h6>
       </div>
       <Button

@@ -2,12 +2,14 @@ import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "../../Form/Button";
+import {
+  Button,
+  RangeInput,
+  ControlledInput,
+  ControlledSelect,
+} from "../../Form";
 import { useAppState } from "../../../hooks";
-import { ControlledInput } from "../../Form/Input";
-import { RangeInput } from "../../Form/RangeInput";
-import { ControlledSelect } from "../../Form/Select";
-import type { ICardProps } from "../../Card/interface";
+import type { ICardProps } from "../../Card";
 
 import { schema, type formType } from "./schema";
 

@@ -1,8 +1,8 @@
+import type { Props } from "react-select";
 import { Controller, type FieldValues } from "react-hook-form";
 
 import CustomSelect from "./Select";
 import type { IConrolledSelectProps } from "./interface";
-import type { Props } from "react-select";
 
 const ControlledSelect = <TFieldValues extends FieldValues>({
   name,

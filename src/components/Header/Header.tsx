@@ -1,4 +1,4 @@
-import { ThemeSwitch } from "../Form/ThemeSwitch";
+import { ThemeSwitch } from "../Form";
 
 const Header = () => {
   const date = new Date();

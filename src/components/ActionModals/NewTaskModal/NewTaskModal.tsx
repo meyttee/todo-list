@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
+import { Button } from "../../Form";
 import { Modal } from "../../Modal";
-import { Button } from "../../Form/Button";
 
 import ModalContent from "./ModalContent";
 
