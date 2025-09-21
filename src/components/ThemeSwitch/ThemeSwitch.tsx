@@ -1,4 +1,4 @@
-import { Switch } from "../switch";
+import { Switch } from "../Switch";
 import { useChangeTheme } from "../../hooks";
 
 const ThemeSwitch = () => {

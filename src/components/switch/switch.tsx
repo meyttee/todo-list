@@ -1,16 +1,14 @@
 import clsx from "clsx";
+import type { ReactNode } from "react";
+
+import type { ISwitchProps } from "./interface";
 
 const Switch = ({
   checked,
   label,
   onChange,
   variant,
-}: {
-  checked?: boolean;
-  onChange?: () => void;
-  label?: string;
-  variant: "theme" | "normal";
-}) => {
+}: ISwitchProps): ReactNode => {
   return (
     <label className="inline-flex cursor-pointer items-center">
       <input
