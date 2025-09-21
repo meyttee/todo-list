@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "../Button";
-import { useAppState } from "../../hooks";
-import { ControlledInput } from "../Input";
+import { Button } from "../../Form/Button";
+import { useAppState } from "../../../hooks";
+import { ControlledInput } from "../../Form/Input";
 
 import { schema, type formType } from "./schema";
 

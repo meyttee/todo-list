@@ -1,5 +1,5 @@
-import { Modal } from "../Modal";
-import { Button } from "../Button";
+import { Modal } from "../../Modal";
+import { Button } from "../../Form/Button";
 
 const ConfirmModal = ({
   title,

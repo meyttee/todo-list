@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useState } from "react";
-import { valuesLabel } from "../../constants";
+import { valuesLabel } from "../../../constants";
 
 const RangeInput = ({
   onChange,

@@ -1,5 +1,5 @@
 import { Switch } from "../Switch";
-import { useChangeTheme } from "../../hooks";
+import { useChangeTheme } from "../../../hooks";
 
 const ThemeSwitch = () => {
   const { changeThemeHandler, theme } = useChangeTheme();

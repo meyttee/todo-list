@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import { createPortal } from "react-dom";
 
-import { Button } from "../Button";
+import { Button } from "../Form";
 import type { IModalProps } from "./interface";
 
 export default function Modal(props: IModalProps) {

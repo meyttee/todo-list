@@ -2,7 +2,8 @@ import type { DragEvent } from "react";
 
 import { Card } from "../Card";
 import { useAppState } from "../../hooks";
-import ColumnHeader from "../ColumnHeader/ColumnHeader";
+
+import { ColumnHeader } from "./ColumnHeader";
 
 const Column = ({ columnId }: { columnId: string }) => {
   const { state, dispatch } = useAppState();

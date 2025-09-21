@@ -2,39 +2,37 @@ import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "../Button";
-import { useAppState } from "../../hooks";
-import { ControlledInput } from "../Input";
-import { RangeInput } from "../RangeInput";
-import { ControlledSelect } from "../Select";
-import type { ICardProps } from "../Card/interface";
+import { Button } from "../../Form/Button";
+import { useAppState } from "../../../hooks";
+import { ControlledInput } from "../../Form/Input";
+import { RangeInput } from "../../Form/RangeInput";
+import { ControlledSelect } from "../../Form/Select";
 
 import { schema, type formType } from "./schema";
 
 const ModalContent = ({
   submitCallback,
-  ...props
+  id,
 }: {
   submitCallback: () => void;
-} & ICardProps) => {
-  const { columnId, description, id, priority, status, title } = props;
+  id: string;
+}) => {
   const { dispatch } = useAppState();
 
   const { handleSubmit, control, setValue, watch } = useForm<formType>({
     resolver: zodResolver(schema),
     defaultValues: {
-      description: description,
-      title: title,
-      priority: priority,
-      status: { label: status, value: status },
+      description: "",
+      title: "",
+      priority: 1,
+      status: { label: "todo", value: "todo" },
     },
   });
 
   const onSubmit = handleSubmit((data) => {
     dispatch({
-      type: "UPDATE_TASK",
-      columnId,
-      taskId: id,
+      type: "CREATE_TASK",
+      key: id,
       value: {
         ...data,
         status: data.status.value as "done" | "todo",

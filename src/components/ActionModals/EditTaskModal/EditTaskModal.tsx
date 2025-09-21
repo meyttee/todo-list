@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
-import { Modal } from "../Modal";
-import { Button } from "../Button";
-import type { ICardProps } from "../Card/interface";
+import { Modal } from "../../Modal";
+import { Button } from "../../Form/Button";
+import type { ICardProps } from "../../Card/interface";
 
 import ModalContent from "./ModalContent";
 
