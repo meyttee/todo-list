@@ -1,9 +1,9 @@
 import type { DragEvent } from "react";
 
-import { TaskCard } from "../TaskCard";
-import { useAppState } from "../../hooks";
+import { TaskCard } from "../../TaskCard";
+import { useAppState } from "../../../hooks";
 
-import { ColumnHeader } from "./ColumnHeader";
+import { ColumnHeader } from "../ColumnHeader";
 
 const Column = ({ columnId }: { columnId: string }) => {
   const { state, dispatch } = useAppState();

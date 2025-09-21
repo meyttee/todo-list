@@ -1,4 +1,4 @@
-export { default as Column } from "./Column";
-export * from "./ColumnActions";
-export * from "./ColumnHeader";
+export * from "./Column";
 export * from "./ColumnTitle";
+export * from "./ColumnHeader";
+export * from "./ColumnActions";
