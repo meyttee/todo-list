@@ -4,8 +4,8 @@ import { useState, type MouseEvent } from "react";
 
 import { Button } from "../Form";
 import { useAppState } from "../../hooks";
-import { periorityMap } from "../../constants";
 import { EditTask, ConfirmModal } from "../ActionModals";
+import { periorityMap, priorityColors, statusColor } from "../../constants";
 
 import { CardDetailModal } from "./CardDetail";
 
@@ -49,7 +49,7 @@ const Card = (props: ICardProps) => {
     <div
       draggable
       onDragStart={(e) => handleDragStart(e, columnId, id)}
-      className="flex w-full items-start rounded-xl border border-gray-200 bg-white p-5 dark:border-white/10 dark:bg-neutral-800"
+      className="flex w-full items-start rounded-xl border border-gray-200 bg-white p-5 shadow shadow-zinc-600 dark:border-white/10 dark:bg-gray-700"
     >
       <CardDetailModal
         {...props}
@@ -59,7 +59,7 @@ const Card = (props: ICardProps) => {
       />
       <div
         className={clsx(
-          "flex w-full cursor-pointer flex-col gap-1 dark:text-white",
+          "flex w-full cursor-pointer flex-col justify-between gap-4 dark:text-white",
           {
             "line-through": status === "done",
           },
@@ -67,39 +67,47 @@ const Card = (props: ICardProps) => {
         onClick={handleOpenModal}
       >
         <h4>{title}</h4>
-        <h6
-          className={clsx(
-            "flex items-center gap-2 before:block before:size-4 before:rounded-full before:content-['']",
-            {
-              "before:!bg-red-400": priority === 3,
-              "before:!bg-blue-400": priority === 2,
-              "before:!bg-green-400": priority === 1,
-            },
-          )}
-        >
-          {periorityMap[priority]}
-        </h6>
+        <div className="flex items-center gap-5">
+          <h6
+            className={clsx(
+              "flex items-center gap-2 before:block before:size-4 before:rounded-full before:content-['']",
+              priorityColors[priority],
+            )}
+          >
+            {periorityMap[priority]}
+          </h6>
+          <h6
+            className={clsx(
+              "flex items-center gap-2 before:block before:size-4 before:rounded-full before:content-['']",
+              statusColor[status],
+            )}
+          >
+            {status}
+          </h6>
+        </div>
       </div>
-      <Button
-        variant="icon"
-        onClick={onDeleteButtonClick}
-        title="delete column"
-      >
-        <Icon
-          icon="majesticons:close"
-          width="20"
-          height="20"
-          className="text-red-300"
+      <div className="flex flex-col">
+        <Button
+          variant="icon"
+          onClick={onDeleteButtonClick}
+          title="delete column"
+        >
+          <Icon
+            icon="majesticons:close"
+            width="20"
+            height="20"
+            className="text-red-300"
+          />
+        </Button>
+        <ConfirmModal
+          handleSubmit={handleSubmit}
+          handleClose={handleClose}
+          isOpen={showDeleteModal}
+          title="Delete Task"
+          description={`After delete (${props.title}) all data will be lost`}
         />
-      </Button>
-      <ConfirmModal
-        handleSubmit={handleSubmit}
-        handleClose={handleClose}
-        isOpen={showDeleteModal}
-        title="Delete Task"
-        description={`After delete (${props.title}) all data will be lost`}
-      />
-      <EditTask {...props} />
+        <EditTask {...props} />
+      </div>
     </div>
   );
 };

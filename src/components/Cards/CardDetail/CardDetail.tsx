@@ -3,8 +3,8 @@ import clsx from "clsx";
 import { Modal } from "../../Modal";
 import { Button } from "../../Form";
 import { useAppState } from "../../../hooks";
+import { periorityMap, statusColor } from "../../../constants";
 
-import { periorityMap } from "../../../constants";
 import type { ICardDetailProps } from "./interface";
 
 const CardDetailModal = (props: ICardDetailProps) => {
@@ -51,7 +51,15 @@ const CardDetailModal = (props: ICardDetailProps) => {
         <div className="flex justify-between gap-10">
           <div className="w-full">
             <h2 className={titleClasses}>Status</h2>
-            <h5 className={sectionBodyClasses}>{status}</h5>
+            <h5
+              className={clsx(
+                sectionBodyClasses,
+                "flex items-center gap-2 before:block before:size-4 before:rounded-full before:content-['']",
+                statusColor[status],
+              )}
+            >
+              {status}
+            </h5>
           </div>
           <div className="w-full">
             <h2 className={titleClasses}>Priority</h2>
