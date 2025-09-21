@@ -4,6 +4,23 @@ import { createPortal } from "react-dom";
 import { Button } from "../Form";
 import type { IModalProps } from "./interface";
 
+/**
+ * Modal component that displays its children in a centered overlay dialog.
+ *
+ * @remarks
+ * Uses React Portal to render the modal outside the DOM hierarchy of its parent.
+ * The modal is only rendered when `isOpen` is `true`.
+ * Clicking the backdrop or the close button will trigger the `onClose` callback.
+ *
+ * @param props - Props for the Modal component.
+ * @param {boolean} props.isOpen - Controls whether the modal is visible.
+ * @param {function} props.onClose - Callback invoked when the modal should be closed.
+ * @param {string} props.title - Title displayed at the top of the modal.
+ * @param {ReactNode} props.children - Content to be rendered inside the modal.
+ *
+ * @returns The modal dialog as a React portal, or `null` if not open.
+ */
+
 export default function Modal(props: IModalProps) {
   const { isOpen, onClose, title, children } = props;
 
