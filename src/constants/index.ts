@@ -1,1 +1,2 @@
-export { default as periorityMap } from "./Priorities";
+export * from "./Priorities";
+export * from "./Status";
