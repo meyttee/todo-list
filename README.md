@@ -1,69 +1,83 @@
-# React + TypeScript + Vite
+# Todo List Interview Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **Kanban-style Todo List application** built with React and TypeScript. It was developed as part of an interview process for a company.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Boards & Columns:** Organize tasks into columns (e.g., To Do, In Progress, Done) on a board.
+- **Task Cards:** Each task is represented as a card with details, priority, and status.
+- **Add/Edit/Delete:** Create, update, and remove tasks and columns.
+- **Modals:** All create/edit actions use modal dialogs for a smooth UX.
+- **Form Validation:** Uses [`react-hook-form`](https://react-hook-form.com/) and [`zod`](https://zod.dev/) for robust form validation.
+- **Priority Selection:** Assign priorities to tasks using a select input.
+- **Theme Switch:** Toggle between light and dark themes.
+- **Responsive UI:** Built with [`Tailwind CSS`](https://tailwindcss.com/) for modern, responsive design.
+- **Reusable Components:** Modular folder structure for maintainability.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** & **TypeScript**
+- **Vite** (development/build tool)
+- **Tailwind CSS** (styling)
+- **React Hook Form** & **Zod** (forms & validation)
+- **UUID** (unique IDs for tasks/columns)
+- **ESLint & Prettier** (code quality & formatting)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Folder Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  components/
+    Board/           # Board and column logic
+    Card/            # Task card UI and details
+    Column/          # Column UI
+    Modal/           # Modal dialogs for forms
+    Form/            # Form elements (Input, Select, etc.)
+    ThemeSwitch/     # Theme toggle component
+    ...
+  constants/         # App-wide constants (priorities, etc.)
+  contexts/          # React context for global state
+  hooks/             # Custom hooks (theme, app state)
+  providers/         # Context providers
+  reducers/          # State reducers
+  utils/             # Utility functions (initial state, etc.)
+  App.tsx            # Main app component
+  main.tsx           # Entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## How to Run
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install dependencies:**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```
+   pnpm install
+   ```
+
+2. **Start development server:**
+
+   ```
+   pnpm dev
+   ```
+
+3. **Build for production:**
+
+   ```
+   pnpm build
+   ```
+
+4. **Lint and format code:**
+   ```
+   pnpm lint
+   pnpm run format
+   ```
+
+## Notes
+
+- This project demonstrates advanced React patterns, modular architecture, and modern UI/UX.
+- All state management is handled via React Context and custom hooks.
+- The codebase is organized for scalability and easy feature addition.
+
+---
+
+**Author:** Mahdi Mohammadi
+**Purpose:** Interview project for a company
