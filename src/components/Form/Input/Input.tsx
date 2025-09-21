@@ -2,6 +2,20 @@ import clsx from "clsx";
 
 import type { IInputProps } from "./interface";
 
+/**
+ * Renders a customizable input field with label and error message.
+ *
+ * @remarks
+ * - Applies conditional styling for error states.
+ * - Supports dark mode styling.
+ * - Displays an error message below the input when `error` is provided.
+ *
+ * @param error - Optional error message to display and style the input.
+ * @param props - Additional input properties defined in {@link IInputProps}.
+ *
+ * @returns A React component containing a label, input field, and error message.
+ */
+
 const Input = ({ error, ...props }: IInputProps) => (
   <div className="flex flex-col gap-1">
     <label
