@@ -16,9 +16,10 @@ This project is a **Kanban-style Todo List application** built with React and Ty
 
 ## Tech Stack
 
-- **React 19** & **TypeScript**
+- **React 19** & **TypeScript 5**
 - **Vite** (development/build tool)
 - **Tailwind CSS** (styling)
+- **clsx** (conditional styling)
 - **React Hook Form** & **Zod** (forms & validation)
 - **UUID** (unique IDs for tasks/columns)
 - **ESLint & Prettier** (code quality & formatting)
@@ -28,12 +29,15 @@ This project is a **Kanban-style Todo List application** built with React and Ty
 ```
 src/
   components/
-    Board/           # Board and column logic
+    Board/           # Board component folder
+      Board.tsx      # Board and column logic
+      index.ts       # export component form here to have cleaner imports; import only from root folder
     Card/            # Task card UI and details
     Column/          # Column UI
     Modal/           # Modal dialogs for forms
     Form/            # Form elements (Input, Select, etc.)
     ThemeSwitch/     # Theme toggle component
+    index.ts         # Consistency with “barrel” exports
     ...
   constants/         # App-wide constants (priorities, etc.)
   contexts/          # React context for global state
