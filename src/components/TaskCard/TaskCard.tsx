@@ -7,11 +7,11 @@ import { useAppState } from "../../hooks";
 import { EditTask, ConfirmModal } from "../ActionModals";
 import { periorityMap, priorityColors, statusColor } from "../../constants";
 
-import { CardDetailModal } from "./CardDetail";
+import { DetailModal } from "../ActionModals";
 
 import type { ICardProps } from "./interface";
 
-const Card = (props: ICardProps) => {
+const TaskCard = (props: ICardProps) => {
   const { status, title, id, columnId, priority } = props;
 
   const { dispatch } = useAppState();
@@ -51,7 +51,7 @@ const Card = (props: ICardProps) => {
       onDragStart={(e) => handleDragStart(e, columnId, id)}
       className="flex w-full items-start rounded-xl border border-gray-200 bg-white p-5 shadow shadow-zinc-600 dark:border-white/10 dark:bg-gray-700"
     >
-      <CardDetailModal
+      <DetailModal
         {...props}
         isOpen={showModal}
         onClose={onClose}
@@ -111,4 +111,4 @@ const Card = (props: ICardProps) => {
     </div>
   );
 };
-export default Card;
+export default TaskCard;

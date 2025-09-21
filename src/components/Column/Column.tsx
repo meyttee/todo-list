@@ -1,6 +1,6 @@
 import type { DragEvent } from "react";
 
-import { Card } from "../Cards";
+import { TaskCard } from "../TaskCard";
 import { useAppState } from "../../hooks";
 
 import { ColumnHeader } from "./ColumnHeader";
@@ -31,7 +31,7 @@ const Column = ({ columnId }: { columnId: string }) => {
     >
       <ColumnHeader title={columnId} />
       {state.data.get(columnId)?.map((card) => (
-        <Card key={card.id} {...card} columnId={columnId} />
+        <TaskCard key={card.id} {...card} columnId={columnId} />
       ))}
     </div>
   );
