@@ -1,4 +1,14 @@
-import type { IData } from "../contexts";
+import {
+  createColumn,
+  createTask,
+  markAsTodo,
+  moveTask,
+  markAsDone,
+  updateTask,
+  deleteTask,
+  deleteColumn,
+  toggleTheme,
+} from "./handlers";
 
 import type { IReducerState, TReducerAction } from "./interface";
 
@@ -8,137 +18,39 @@ const reducer = (
 ): IReducerState => {
   switch (action.type) {
     case "CREATE_COLUMN": {
-      const newMap = new Map(state.data);
-      newMap.set(action.key, []);
-      return { ...state, data: newMap };
+      return createColumn(state, action);
     }
 
     case "CREATE_TASK": {
-      const newMap = new Map(state.data);
-      const tasks = newMap.get(action.key) || [];
-      newMap.set(
-        action.key,
-        [...tasks, action.value].sort((a, b) => b.priority - a.priority),
-      );
-      return { ...state, data: newMap };
+      return createTask(state, action);
     }
 
     case "MOVE_TASK": {
-      const newMap = new Map(state.data);
-      if (action.fromCol === action.targetCol) {
-        return { ...state, data: newMap };
-      } else {
-        const prevCol = newMap.get(action.fromCol);
-        const prevList = prevCol?.filter(
-          (prev) => prev.id !== action.taskId,
-        ) as IData[];
-        const targetCol = newMap.get(action.targetCol);
-        const targetList = [
-          ...(targetCol?.map((item) => item) as IData[]),
-          ...(prevCol?.filter((prev) => prev.id === action.taskId) as IData[]),
-        ];
-        newMap.set(
-          action.targetCol,
-          targetList.sort((a, b) => b.priority - a.priority),
-        );
-        newMap.set(
-          action.fromCol,
-          prevList.sort((a, b) => b.priority - a.priority),
-        );
-        return { ...state, data: newMap };
-      }
+      return moveTask(state, action);
     }
 
     case "MARK_AS_DONE": {
-      const newMap = new Map(state.data);
-      const tasks = newMap.get(action.columnId) || [];
-      const selectedTask = tasks.find(
-        (task) => task.id === action.taskId,
-      ) as IData;
-      const otherTasks = tasks.filter(
-        (task) => task.id !== action.taskId,
-      ) as IData[];
-
-      newMap.set(
-        action.columnId,
-        [
-          ...otherTasks,
-          {
-            ...selectedTask,
-            status: "done" as const,
-          },
-        ].sort((a, b) => b.priority - a.priority),
-      );
-      return { ...state, data: newMap };
+      return markAsDone(state, action);
     }
 
     case "MARK_AS_TODO": {
-      const newMap = new Map(state.data);
-      const tasks = newMap.get(action.columnId) || [];
-      const selectedTask = tasks.find(
-        (task) => task.id === action.taskId,
-      ) as IData;
-      const otherTasks = tasks.filter(
-        (task) => task.id !== action.taskId,
-      ) as IData[];
-
-      newMap.set(
-        action.columnId,
-        [
-          ...otherTasks,
-          {
-            ...selectedTask,
-            status: "todo" as const,
-          },
-        ].sort((a, b) => b.priority - a.priority),
-      );
-      return { ...state, data: newMap };
+      return markAsTodo(state, action);
     }
 
     case "UPDATE_TASK": {
-      const newMap = new Map(state.data);
-      const tasks = newMap.get(action.columnId) || [];
-      const selectedTask = tasks.find(
-        (task) => task.id === action.taskId,
-      ) as IData;
-      const otherTasks = tasks.filter(
-        (task) => task.id !== action.taskId,
-      ) as IData[];
-
-      newMap.set(
-        action.columnId,
-        [
-          ...otherTasks,
-          {
-            ...selectedTask,
-            ...action.value,
-          },
-        ].sort((a, b) => b.priority - a.priority),
-      );
-      return { ...state, data: newMap };
+      return updateTask(state, action);
     }
 
     case "DELETE_TASK": {
-      const newMap = new Map(state.data);
-      const tasks = newMap.get(action.columnId) || [];
-      newMap.set(
-        action.columnId,
-        tasks
-          .filter((task) => task.id !== action.taskId)
-          .sort((a, b) => b.priority - a.priority),
-      );
-      return { ...state, data: newMap };
+      return deleteTask(state, action);
     }
 
     case "DELETE_COLUMN": {
-      const newMap = new Map(state.data);
-      newMap.delete(action.key);
-      return { ...state, data: newMap };
+      return deleteColumn(state, action);
     }
 
     case "TOGGLE_THEME": {
-      const newTheme = state.theme === "light" ? "dark" : "light";
-      return { ...state, theme: newTheme };
+      return { ...state, theme: toggleTheme(state) };
     }
 
     default:
