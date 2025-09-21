@@ -1,6 +1,6 @@
 import { useEffect, useReducer, type PropsWithChildren } from "react";
 
-import { initialState } from "../utils";
+import { initialState } from "../constants";
 import { StateContext } from "../contexts";
 import { reducer, type IReducerState } from "../reducers";
 
