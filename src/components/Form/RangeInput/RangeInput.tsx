@@ -2,6 +2,18 @@ import clsx from "clsx";
 import { useState } from "react";
 import { periorityMap } from "../../../constants";
 
+/**
+ * RangeInput component allows users to select a priority value visually.
+ *
+ * @param onChange - Callback function invoked when the priority value changes.
+ * @param value - The current priority value (number).
+ * @param label - Label displayed above the input.
+ *
+ * The component displays three selectable circles, each representing a priority level.
+ * Clicking a circle updates the selected value and highlights the active priority.
+ * The priority label is displayed using the `periorityMap` constant.
+ */
+
 const RangeInput = ({
   onChange,
   value,
