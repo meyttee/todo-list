@@ -1,6 +1,6 @@
 export * from "./Board";
 export * from "./Form";
-export * from "./Card";
+export * from "./Cards";
 export * from "./Column";
 export * from "./ActionModals";
 export * from "./Container";
