@@ -1,10 +1,10 @@
 import clsx from "clsx";
 
-import { Button } from "../../Form";
 import { Modal } from "../../Modal";
+import { Button } from "../../Form";
 import { useAppState } from "../../../hooks";
-import { periorityMap } from "../../../constants";
 
+import { periorityMap } from "../../../constants";
 import type { ICardDetailProps } from "./interface";
 
 const CardDetailModal = (props: ICardDetailProps) => {

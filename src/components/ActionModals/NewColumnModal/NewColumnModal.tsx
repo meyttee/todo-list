@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { Icon } from "@iconify/react";
+import { lazy, useState } from "react";
 
 import { Modal } from "../../Modal";
 import { Button } from "../../Form";
-import ModalContent from "./ModalContent";
+
+const ModalContent = lazy(() => import("./ModalContent"));
 
 const NewColumnModal = () => {
   const [showModal, setShowModal] = useState(false);

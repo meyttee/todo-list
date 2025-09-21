@@ -1,19 +1,15 @@
 import { Modal } from "../../Modal";
 import { Button } from "../../Form";
 
+import type { IConfirmModalProps } from "./interface";
+
 const ConfirmModal = ({
   title,
   description,
   handleSubmit,
   handleClose,
   isOpen,
-}: {
-  title: string;
-  description: string;
-  handleSubmit: () => void;
-  handleClose: () => void;
-  isOpen: boolean;
-}) => (
+}: IConfirmModalProps) => (
   <Modal title={title} isOpen={isOpen} onClose={handleClose}>
     <div className="flex flex-col gap-4">
       <h2 className="text-center text-xl font-semibold dark:text-white">

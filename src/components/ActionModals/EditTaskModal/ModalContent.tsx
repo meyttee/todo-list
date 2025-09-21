@@ -9,17 +9,13 @@ import {
   ControlledSelect,
 } from "../../Form";
 import { useAppState } from "../../../hooks";
-import type { ICardProps } from "../../Card";
 
 import { schema, type formType } from "./schema";
+import type { IEditModalContentProps } from "./interface";
 
-const ModalContent = ({
-  submitCallback,
-  ...props
-}: {
-  submitCallback: () => void;
-} & ICardProps) => {
-  const { columnId, description, id, priority, status, title } = props;
+const ModalContent = (props: IEditModalContentProps) => {
+  const { columnId, description, id, priority, status, title, submitCallback } =
+    props;
   const { dispatch } = useAppState();
 
   const { handleSubmit, control, setValue, watch } = useForm<formType>({
